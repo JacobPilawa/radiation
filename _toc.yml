@@ -1,0 +1,22 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+- file: pages/1radiativequantities
+- file: pages/2radiativetransport
+- file: pages/3maxwellsequations
+- file: pages/4scatteringandabsorption
+- file: pages/5thermodynamicequilibrium
+- file: pages/6semiclassicalhydrogen
+- file: pages/7einsteincoefficients
+- file: pages/8spectrallinebroadening
+
+
+
+
+
+
+
+
