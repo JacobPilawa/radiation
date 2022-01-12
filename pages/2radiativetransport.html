@@ -42,6 +42,8 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -236,6 +238,46 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#radiative-transfer-equation">
+   Radiative Transfer Equation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#absorption">
+     Absorption
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#emission">
+     Emission
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#emission-and-extinction-together">
+     Emission and Extinction Together
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#optical-depth">
+   Optical Depth
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#takeaways">
+   Takeaways
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -248,6 +290,46 @@
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#radiative-transfer-equation">
+   Radiative Transfer Equation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#absorption">
+     Absorption
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#emission">
+     Emission
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#emission-and-extinction-together">
+     Emission and Extinction Together
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#optical-depth">
+   Optical Depth
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#takeaways">
+   Takeaways
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -256,6 +338,136 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="radiative-transport">
 <h1>Radiative Transport<a class="headerlink" href="#radiative-transport" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="radiative-transfer-equation">
+<h2>Radiative Transfer Equation<a class="headerlink" href="#radiative-transfer-equation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="absorption">
+<h3>Absorption<a class="headerlink" href="#absorption" title="Permalink to this headline">¶</a></h3>
+<p>Say some radiation <span class="math notranslate nohighlight">\(I_\nu\)</span> passes through a region <span class="math notranslate nohighlight">\(ds\)</span> of absorption/scattering on its way to us. Then:</p>
+<div class="math notranslate nohighlight">
+\[
+dI_{\nu }=-\alpha _{\nu }I_{\nu }ds
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\alpha_\nu\)</span> is the extinction coefficient (units of <span class="math notranslate nohighlight">\(cm^{-1}\)</span>). We may compute <span class="math notranslate nohighlight">\(\alpha_nu\)</span> a couple different ways:</p>
+<div class="math notranslate nohighlight">
+\[
+\alpha_\nu = n \sigma_\nu = \rho \kappa_\nu
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(n\)</span> is the number density</p></li>
+<li><p><span class="math notranslate nohighlight">\(\sigma_\nu\)</span> os the cross section</p></li>
+<li><p><span class="math notranslate nohighlight">\(\rho\)</span> is the mass desnity</p></li>
+<li><p><span class="math notranslate nohighlight">\(\kappa_\nu\)</span> is the opacity</p></li>
+</ul>
+<p>Solving for intensity, we find:</p>
+<div class="math notranslate nohighlight">
+\[
+I_\nu(s) = e^{-n\sigma_\nu s} = e^{-\tau_\nu}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\tau_\nu\)</span> is the optical depth at <span class="math notranslate nohighlight">\(\nu\)</span>. Optical depth is often computed as:</p>
+<div class="math notranslate nohighlight">
+\[
+\tau_\nu = n \sigma_\nu s = N \sigma_\nu 
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(N\)</span> is the column density of absorbers. Similarly, we have:</p>
+<div class="math notranslate nohighlight">
+\[
+\tau_\nu = \rho \kappa_\nu s = \Sigma \kappa_\nu
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Sigma\)</span> is the mass surface density and <span class="math notranslate nohighlight">\(\kappa_\nu\)</span> is the density-weighted extinction coefficient.</p>
+<p>Note that when <span class="math notranslate nohighlight">\(\tau \gg 1\)</span>, we say it is <strong>optically thick</strong>, and when <span class="math notranslate nohighlight">\(\tau \ll 1\)</span>, we say we are <strong>optically thin</strong>.</p>
+<p>The <strong>mean free path</strong> is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+\lambda_\nu = \alpha_\nu^{-1} = \frac{1}{n\sigma_\nu} 
+\]</div>
+<p>Thus, we have:</p>
+<div class="math notranslate nohighlight">
+\[
+\tau_\nu = \frac{s}{\lambda_\nu}
+\]</div>
+<p>That is, the optical depth is the number of mean-free-paths deep a medium is. For Poisson processes, the probability of absorption is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+P(n)={e^{-{s \over \lambda _{mfp,\nu }}}\left({s \over \lambda _{mfp,\nu }}\right)^{n} \over n!}
+\]</div>
+<p>And therefore:</p>
+<div class="math notranslate nohighlight">
+\[
+I_\nu(s) = I_\nu(0) e^{-\alpha_\nu s}
+\]</div>
+</div>
+<div class="section" id="emission">
+<h3>Emission<a class="headerlink" href="#emission" title="Permalink to this headline">¶</a></h3>
+<p>If <span class="math notranslate nohighlight">\(j_{\nu }\)</span> is the emissivity, then the contribution of the emissivity of a medium to the flux is:</p>
+<div class="math notranslate nohighlight">
+\[
+{\displaystyle dI_{\nu }=j_{\nu }ds\,\!}{\displaystyle dI_{\nu }=j_{\nu }ds\,\!}
+\]</div>
+</div>
+<div class="section" id="emission-and-extinction-together">
+<h3>Emission and Extinction Together<a class="headerlink" href="#emission-and-extinction-together" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[
+{\displaystyle {{dI_{\nu } \over ds}=j_{\nu }-\alpha _{\nu }I_{\nu }}\,\!}
+\]</div>
+<p>It is often convenient to express this in terms of optical depth. Dividing by <span class="math notranslate nohighlight">\(\alpha_\nu\)</span> and recognizing <span class="math notranslate nohighlight">\(d\tau_\nu = \alpha_\nu \, ds\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+{\displaystyle {\begin{aligned}{dI_{\nu } \over d\tau _{\nu }}&amp;={j_{\nu } \over \alpha _{\nu }}-I_{\nu }\\&amp;=S_{\nu }-I_{\nu }\\\end{aligned}}\,\!}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\({\displaystyle S_{\nu }}\)</span> is a “source function”. In general,</p>
+<div class="math notranslate nohighlight">
+\[
+{\displaystyle S_{\nu }{\big |}_{scattering}\propto \int {I_{\nu }d\Omega }\,\!}
+\]</div>
+<p>There is a formal solution for <span class="math notranslate nohighlight">\(I_\nu\)</span>. Let’s define <span class="math notranslate nohighlight">\(\hat{I} \equiv Ie^{-\tau_\nu}\)</span> and <span class="math notranslate nohighlight">\(\hat{S} \equiv S e^{-\tau_\nu}\)</span>. Then:</p>
+<div class="math notranslate nohighlight">
+\[
+{\displaystyle {d{\tilde {I}} \over d\tau _{\nu }}={\tilde {S}}\,\!}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+{\displaystyle {\tilde {I}}(\tau _{\nu })={\tilde {I}}(0)+\int _{0}^{\tau _{\nu }}{{\tilde {S}}~d{\tilde {\tau }}_{\nu }}\,\!}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+{\displaystyle {I_{\nu }(\tau _{\nu })=\overbrace {I_{\nu }(0)e^{-\tau _{\nu }}} ^{background\ light}+\overbrace {\int _{0}^{\tau _{\nu }}{S_{\nu }(\tau _{\nu }^{\prime })\underbrace {e^{-(\tau _{\nu }-\tau _{\nu }^{\prime })}} _{self-absorption}d\tau _{\nu }^{\prime }}} ^{glowing\ medium}}\,\!}
+\]</div>
+<p><strong>If <span class="math notranslate nohighlight">\(S_\nu\)</span> is constant with <span class="math notranslate nohighlight">\(\tau_\nu\)</span>, then:</strong></p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{{\displaystyle I_{\nu }(\tau _{\nu })=I_{\nu }(0)e^{-\tau _{\nu }}+S_{\nu }(1-e^{-\tau _{\nu }})\,\!}}
+\]</div>
+<p>That second term on the righthand side can be approximated as <span class="math notranslate nohighlight">\({\displaystyle S_{\nu }\tau _{\nu }}\)</span> for <span class="math notranslate nohighlight">\({\displaystyle \tau _{\nu }\ll 1}\)</span>, since self-absorption is negligible. Similarly, for <span class="math notranslate nohighlight">\({\displaystyle \tau _{\nu }\gg 1}\)</span>, it may be approximated as <span class="math notranslate nohighlight">\({\displaystyle S_{\nu }}\)</span>. The source function <span class="math notranslate nohighlight">\({\displaystyle S_{\nu }}\)</span> is everything. It has both the absorption and emission coefficients embedded in it.</p>
+</div>
+</div>
+<div class="section" id="optical-depth">
+<h2>Optical Depth<a class="headerlink" href="#optical-depth" title="Permalink to this headline">¶</a></h2>
+<p>Examples from <a class="reference external" href="https://casper.astro.berkeley.edu/astrobaki/index.php/Optical_Depth">Astrobaki</a>:</p>
+<p><img alt="" src="../_images/250px-Mona_lisa_vs_radius.png" /></p>
+<p>An example of the Mona Lisa at optical depth of <span class="math notranslate nohighlight">\({\displaystyle \tau =0.1}\)</span>, for obscuring particles of various radii. To achieve the same optical depth, particles with a smaller cross-sectional area need to have a higher column density.</p>
+<p><img alt="" src="../_images/250px-Mona_lisa_vs_opt_depth.png" /></p>
+<p>The Mona Lisa at various optical depths, illustrating how the transition from optically thin to optically thick erases the background picture.</p>
+<p><img alt="" src="../_images/250px-Fog.png" /></p>
+<p>A useful real world example of optical depth is fog. Within a fog cloud, nearby objects are clearly visible and distant objects are completely obscured. At intermediate distances, objects are difficult but not impossible to discern. In this image, the tree to the left corresponds to an optical depth of approximately 1, since it is mostly obscured, though still visible. The person in the foreground is at an optical depth of less than 1 (perhaps around 0.5), since they are easily discernable and there is very little fog blocking light between the person and the observer. Lastly, the end of the road is at an optical depth much greater than 1, since it is completely covered over by the fog and invisible to the observer.</p>
+</div>
+<div class="section" id="takeaways">
+<h2>Takeaways<a class="headerlink" href="#takeaways" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Equation of Radiative Transfer</strong>
+$<span class="math notranslate nohighlight">\(
+{\displaystyle {{dI_{\nu } \over ds}=j_{\nu }-\alpha _{\nu }I_{\nu }}\,\!}
+\)</span>$</p></li>
+<li><p><strong>EoRT in terms of Optical Depth:</strong>
+$<span class="math notranslate nohighlight">\(
+{\displaystyle {\begin{aligned}{dI_{\nu } \over d\tau _{\nu }}&amp;={j_{\nu } \over \alpha _{\nu }}-I_{\nu }\\&amp;=S_{\nu }-I_{\nu }\\\end{aligned}}\,\!}
+\)</span>$</p></li>
+<li><p><span class="math notranslate nohighlight">\(\alpha_\nu \equiv n \sigma_\nu \equiv \rho \kappa_\nu\)</span> is the extinction coefficient with units of inverse length squared.</p></li>
+<li><p><span class="math notranslate nohighlight">\(j_\nu\)</span> is the emissivity and has units of specific intensity divided by length.</p></li>
+<li><p><span class="math notranslate nohighlight">\(S_\nu \equiv \frac{j_\nu}{\alpha_\nu}\)</span> is the source function.</p></li>
+</ul>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
