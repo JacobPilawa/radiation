@@ -124,7 +124,7 @@
 
 # ## Larmor Formula
 
-# <img src="../figures/larmor.png" width="400">
+# ![](../figures/larmor.png)
 # 
 
 # This equations describes the power radiated from an accelerated charge. Come back and fill in the details. 
@@ -256,5 +256,11 @@
 # 
 # Because the acceleration dictates the axis along which the electric field is perturbed, Larmor radiation is generally polarized, though if an ensemble of charged particles experience accelerations in different directions, the ensemble averaged radiation may be depolarized.
 
-# <img src="../figures/larmor2.png" width="500">
+# ![](../figures/larmor2.png)
 # 
+
+# In[ ]:
+
+
+
+
