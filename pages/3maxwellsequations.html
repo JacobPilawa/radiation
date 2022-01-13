@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Maxwell’s Equations &#8212; Radiative Processes in Astrophysics</title>
+    <title>Maxwell’s Equations and the Larmor Formula &#8212; Radiative Processes in Astrophysics</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -42,6 +42,8 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -109,7 +111,7 @@
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Maxwell’s Equations
+   Maxwell’s Equations and the Larmor Formula
   </a>
  </li>
  <li class="toctree-l1">
@@ -236,6 +238,46 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#electromagnetic-plane-waves">
+   Electromagnetic Plane Waves
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#energy-density-of-electric-field">
+   Energy Density of Electric Field
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#larmor-formula">
+   Larmor Formula
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-fourier-transform">
+   The Fourier Transform
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#takeaways">
+   Takeaways
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#larmor-supplement">
+     Larmor Supplement
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -243,19 +285,272 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Maxwell’s Equations</h1>
+                <h1>Maxwell’s Equations and the Larmor Formula</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#electromagnetic-plane-waves">
+   Electromagnetic Plane Waves
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#energy-density-of-electric-field">
+   Energy Density of Electric Field
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#larmor-formula">
+   Larmor Formula
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-fourier-transform">
+   The Fourier Transform
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#takeaways">
+   Takeaways
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#larmor-supplement">
+     Larmor Supplement
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="maxwell-s-equations">
-<h1>Maxwell’s Equations<a class="headerlink" href="#maxwell-s-equations" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="maxwell-s-equations-and-the-larmor-formula">
+<h1>Maxwell’s Equations and the Larmor Formula<a class="headerlink" href="#maxwell-s-equations-and-the-larmor-formula" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="electromagnetic-plane-waves">
+<h2>Electromagnetic Plane Waves<a class="headerlink" href="#electromagnetic-plane-waves" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[
+    \nabla \cdot \vec{E} = \frac{\rho}{\varepsilon_0}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+    \nabla \cdot \vec{B} = 0
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+    \vec{\nabla} \times \vec{E} = -\frac{\partial \vec{B}}{\partial t}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+    \vec{\nabla} \times \vec{B} = \mu_0 \vec{J} +\frac{1}{c^2}\frac{\partial \vec{E}}{\partial t}
+\]</div>
+<p>We can thus derive the wave equation from these assuming free space (no <span class="math notranslate nohighlight">\(\rho\)</span> and no <span class="math notranslate nohighlight">\(\vec{J}\)</span>. Use the identity:</p>
+<div class="math notranslate nohighlight">
+\[
+    \nabla \times \overbrace{\nabla \times \vec{E}}^{-\frac{\partial \vec{B}}{\partial t}} = \nabla(\overbrace{\nabla \cdot \vec{E}}^{\text{zero}}) - \nabla^{2} \vec{E}
+\]</div>
+<p>We then exchange order of partials on <span class="math notranslate nohighlight">\(\vec{B}\)</span>. We also assume free space, so it simplifies:</p>
+<div class="math notranslate nohighlight">
+\[
+    \boxed{\nabla^{2} \vec{E} = \mu_0 \varepsilon_0\frac{\partial \vec{E}}{\partial t}}
+\]</div>
+<p>We now will solve this by assuming that the solution is sinusoidal.</p>
+<div class="math notranslate nohighlight">
+\[
+    \vec{E} = \vec{E} e^{i \omega t}
+\]</div>
+<p>We then assume that the wave changes sinusoidally in the z direction and has a constant value in <span class="math notranslate nohighlight">\((x,y)\)</span>. This gives a solution of the form:</p>
+<div class="math notranslate nohighlight">
+\[
+    \boxed{\vec{E} = \vec{E}_0 e^{i(\omega t - kz)}}
+\]</div>
+<p>We can plug this into the wave equation, and we find that <span class="math notranslate nohighlight">\(\boxed{k = \omega \sqrt{\mu_0 \epsilon_0}}\)</span>. The assumptions that we are making here are that <span class="math notranslate nohighlight">\(\varepsilon_0\)</span> and <span class="math notranslate nohighlight">\(\mu_0\)</span> do not vary, that there is no movable charge around, that the material is not conductive, the wave moves in the z-direction, and the <span class="math notranslate nohighlight">\(\vec{E}\)</span> field is in <span class="math notranslate nohighlight">\((x,y)\)</span> and has the same amplitude.</p>
+<p>General form:</p>
+<div class="math notranslate nohighlight">
+\[
+    \vec{E} = \vec{E}_0 e^{i(\omega t - \vec{k} \cdot \vec{r})}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+    \vec{k} = \omega \sqrt{\mu \varepsilon} \hat{k}
+\]</div>
+<p>This is a plane wave solution in <span class="math notranslate nohighlight">\(\vec{k}\)</span> direction. there is some constant value in the <span class="math notranslate nohighlight">\(\vec{E}\)</span> field, but that point changes in space and time. We can simplify to just <span class="math notranslate nohighlight">\(z\)</span>.</p>
+<p>So why are plane waves useful? Far away from sources, it is a fair approximation to say it is a plane wave. Additionally, superposition holds for plane waves. Nearly any waveform in space or time can be made up by summing enough plane waves (Fourier theory!). Note here plane waves obviously have amplitude and phase, and there are ways to relate space and time for the group and phase velocities. Plane wave solutions also have the fields perpendicular to each other.</p>
+<p>Note we can define a quantity that tells us the relationship between the E&amp;M fields in free space</p>
+<div class="math notranslate nohighlight">
+\[
+    \eta = \sqrt{\frac{\mu}{\varepsilon}} = 377 \text{ Ohms}
+\]</div>
+<p>Also, more generally:</p>
+<div class="math notranslate nohighlight">
+\[
+    v_{phase} = \frac{1}{\sqrt{\epsilon_r \mu_0 \epsilon_0}} = \frac{c}{n}
+\]</div>
+</div>
+<div class="section" id="energy-density-of-electric-field">
+<h2>Energy Density of Electric Field<a class="headerlink" href="#energy-density-of-electric-field" title="Permalink to this headline">¶</a></h2>
+<p>Consider a p-p capacitor. For one plate,</p>
+<div class="math notranslate nohighlight">
+\[
+    E = \frac{Q/A}{2\epsilon_0}
+\]</div>
+<p>One plate exerts a force on the other, and those does work! The work <span class="math notranslate nohighlight">\(W = \Delta U = F\Delta s\)</span>. This energy per unit volume is thus is thus:</p>
+<div class="math notranslate nohighlight">
+\[
+    \Delta U = \frac{1}{2}\frac{Q^2}{A^2 \epsilon_0} = \frac12 \left(\frac{Q/A}{\epsilon_0}\right)^2 = \frac{1}{2} \epsilon_0 E^2
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+    \boxed{\frac{\Delta U}{\Delta V} = \frac{1}{2} \epsilon_0 E^2}
+\]</div>
+<p>We could also derive this with dimensional analysis and Maxwell’s equations. Check the dimensions of <span class="math notranslate nohighlight">\(E\)</span> and <span class="math notranslate nohighlight">\(V\)</span> Electric field squared gives energy density. Same with the magnetic field. Same with the product. But dimensional analysis does not tell us which one is correct. We need more information.</p>
+<p>We can write down a continuity equation for the energy density from Maxwell’s equations. We end up getting:</p>
+<div class="math notranslate nohighlight">
+\[
+    \frac12 \frac{\partial}{\partial t}(E^2 + B^2) = -c \vec{\nabla}(\vec{E}\times\vec{B})
+\]</div>
+<p>Using the Poynting vector, we then get <strong>the energy density of the electromagnetic field in CGS units</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+    \boxed{\epsilon = \frac{1}{8\pi}\left(E^2 + B^2\right)}
+\]</div>
+<p>Also, we can get the energy density of the magnetic field, and the total energy in terms of only <span class="math notranslate nohighlight">\(E\)</span> or <span class="math notranslate nohighlight">\(B\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+    \boxed{\frac{\Delta U}{\Delta V} = \frac{1}{2\mu_0 }B^2}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+    \boxed{u = \frac{B^2}{\mu_0}}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+    \boxed{u = \epsilon_0 E^2}
+\]</div>
+</div>
+<div class="section" id="larmor-formula">
+<h2>Larmor Formula<a class="headerlink" href="#larmor-formula" title="Permalink to this headline">¶</a></h2>
+<img src="../figures/larmor.png" width="400">
+<p>This equations describes the power radiated from an accelerated charge. Come back and fill in the details.</p>
+<p>Special relativity tells us that charges moving at constant velocity do not have oscillations or radiation. We must have acceleration. The main idea of the derivation is that an acceleration cause a necessary ``jump’’ in the electric field in a shell. We must connect this disturbance. We then have a plane wave moving outward, and have a photon (Figure above).</p>
+<p>What is the power radiated in that shell? We need to find the perpendicular and radial components of the <span class="math notranslate nohighlight">\(E\)</span> field in that region. This gives us the slope of the <span class="math notranslate nohighlight">\(E\)</span> field there.</p>
+<div class="math notranslate nohighlight">
+\[
+    \frac{E_\perp}{E_r} = \frac{\Delta v t \sin{\theta}}{c \Delta t} = \frac{ar}{c^2} \sin{\theta}
+\]</div>
+<p>We also know:</p>
+<div class="math notranslate nohighlight">
+\[
+    E_r = \frac{q}{r^2} \rightarrow E_\perp = \frac{qa \sin{\theta}}{c^2 r}
+\]</div>
+<p>We can use the energy density in the EM field, and we also know that <span class="math notranslate nohighlight">\(E^2 = B^2\)</span>. Therefore,</p>
+<div class="math notranslate nohighlight">
+\[
+    U = \frac{E^2}{ 4 \pi} \rightarrow E = VU = \frac{E_\perp^2}{4\pi} \underbrace{4\pi r^2 c\Delta t}_{\text{volume of shell}}
+\]</div>
+<p>The energy is thus:</p>
+<div class="math notranslate nohighlight">
+\[
+    E = \frac{q^2 a^2}{c^4 r^2} \times \overbrace{\frac{1}{4\pi} \int \sin^2{\theta} d\theta}^{\text{average of sine squared over shell}} \frac{1}{4\pi} c\Delta t
+\]</div>
+<p>We then get:</p>
+<div class="math notranslate nohighlight">
+\[
+    E = \frac{2q^2 a^2}{3c^3} \Delta t \rightarrow \boxed{P = \frac{2}{3} \frac{q^2 a^2}{c^3}}
+\]</div>
+<p>This is the <strong>Larmor formula</strong>. This is the total power radiated from an accelerating charge. Remember that power <strong>not isotropic</strong> and we also said nothing about the frequency of the plane wave. This is because the spectrum of the emission depends on the time variation of the emission. We do not know what the energy in each photon is, but only the total power radiated.</p>
+<p>Interestingly, one can derive the Larmor formula another way as well. Consider a charge <span class="math notranslate nohighlight">\(q\)</span> oscillating within a one dimensional quantum harmonic oscillator (characterized by oscillator frequency <span class="math notranslate nohighlight">\(\omega\)</span>). Further suppose that the charge starts out in an energy eigenstate <span class="math notranslate nohighlight">\(|n\rangle\)</span> of the oscillator, and decays by spontaneous emission to <span class="math notranslate nohighlight">\(|m\rangle\)</span>. The timescale for decay is set by the Einstein A coefficient:</p>
+<div class="math notranslate nohighlight">
+\[
+A  = \frac{\omega_0^3 |\alpha|^2}{3\pi\epsilon_0 \hbar c^3}.
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\alpha \equiv q\langle n | x | m \rangle\)</span>. This matrix element can be calculated trivially using the raising and lowering operators for the SHO,. Further note that that <span class="math notranslate nohighlight">\(m = n-1\)</span> (we’re talking about \textit{decay}), so we have:</p>
+<div class="math notranslate nohighlight">
+\[
+\alpha = \sqrt{\frac{\hbar}{2m\omega}}\delta_{m, n-1} \hat{x}.
+\]</div>
+<p>The energy levels of the SHO are <span class="math notranslate nohighlight">\(E_n = (n+\frac{1}{2})\hbar\omega\)</span>. Therefore, the frequency of the emitted photon as the system decays is:</p>
+<div class="math notranslate nohighlight">
+\[
+\omega_0 = \frac{E_n - E_m}{\hbar} = \omega.
+\]</div>
+<p>So, the emitted photon has a frequency which is equal to the oscillation frequency of the system! We can also calculate the lifetime of the state, <span class="math notranslate nohighlight">\(\tau \sim 1/A\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\tau = \frac{6\pi\epsilon_0mc^3}{nq^2\omega^2}.
+\]</div>
+<p>The \textit{power} carried away is just the energy carried away divided by this timescale, i.e.:</p>
+<div class="math notranslate nohighlight">
+\[
+P = \frac{q^2\omega^2}{6\pi\epsilon_0mc^3}n\hbar\omega = \frac{q^2\omega^2}{6\pi\epsilon_0mc^3}(E_n - \frac{1}{2}\hbar\omega)
+\]</div>
+<p>Dropping the <span class="math notranslate nohighlight">\(\frac{1}{2}\hbar\omega\)</span> (this is the classical limit, <span class="math notranslate nohighlight">\(\hbar \rightarrow 0\)</span>), and using the fact that <span class="math notranslate nohighlight">\(E = \frac{1}{2}kx^2 = \frac{1}{2}m\omega^2x^2_0\)</span>, we have:</p>
+<div class="math notranslate nohighlight">
+\[
+P =  \frac{q^2\omega^4x_0^2}{12\pi\epsilon_0c^3}.
+\]</div>
+<p>Finally, we note that for a harmonic oscillator, differentiating <span class="math notranslate nohighlight">\(x(t)\)</span> twice and time averaging gives us an acceleration <span class="math notranslate nohighlight">\(\langle a^2 \rangle = x_0\omega^2/2\)</span>. So, our expression above is just:</p>
+<div class="math notranslate nohighlight">
+\[
+P =  \frac{q^2a^2}{6\pi\epsilon_0c^3},
+\]</div>
+<p>which is exactly the classical Larmor formula!</p>
+</div>
+<div class="section" id="the-fourier-transform">
+<h2>The Fourier Transform<a class="headerlink" href="#the-fourier-transform" title="Permalink to this headline">¶</a></h2>
+<p>The Fourier Transform changes something from time domain to frequency domain and back again (using the inverse FT).</p>
+<div class="math notranslate nohighlight">
+\[
+    F(\omega) = \int_{-\infty}^{\infty} f(t) e^{i \omega t} dt
+\]</div>
+<p>We can express any signal as a sum of sine waves with some frequency and amplitude. The Fourier transform takes in the signal and outputs the amplitude as a function of <span class="math notranslate nohighlight">\(\omega\)</span>. You get both a real and imaginary part, too, for both the amplitude of the cosine and sine terms in the Fourier expansion.</p>
+</div>
+<div class="section" id="takeaways">
+<h2>Takeaways<a class="headerlink" href="#takeaways" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Maxwell’s equations tell us about the <span class="math notranslate nohighlight">\(E\)</span> and <span class="math notranslate nohighlight">\(B\)</span> field dynamics. <span class="math notranslate nohighlight">\(E\)</span> and <span class="math notranslate nohighlight">\(B\)</span> fields propagate perpendicular to each other and the direction of propagation (Poynting flux).</p></li>
+<li><p>Accelerating electric charges causes radiation. We can describe the average power (not isotropic, agnostic to frequency of radiation) carried away from the accelerated charge with the <strong>Larmor formula</strong>:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\boxed{P = \frac{2}{3} \frac{e^2 a^2}{c^3}}
+\]</div>
+<ul class="simple">
+<li></li>
+</ul>
+<div class="section" id="larmor-supplement">
+<h3>Larmor Supplement<a class="headerlink" href="#larmor-supplement" title="Permalink to this headline">¶</a></h3>
+<p>Here’s an additional bit of information Larmor Radiation, with a link to a simulation notebook: <a class="reference external" href="https://github.com/AaronParsons/astro207/blob/main/notebooks/Larmor%20Radiation.ipynb">here</a>.</p>
+<p>This interactive simulation illustrates how, in the non-relativistic regime, accelerating a charged particle at a characteristic frequency  launches oscillations in the electric field that propagate outward as an electromagnetic wave.</p>
+<p>The power radiated by an accelerated charge (integrating over all angles) follows the Larmor formula:</p>
+<div class="math notranslate nohighlight">
+\[
+P = \frac23 \frac{e^2 a^2}{c^3}
+\]</div>
+<p>where  is the charge of the particle,  is the magnitude of the acceleration, and  is the speed of light.</p>
+<p>However, as the simulation shows, more power is radiated in directions perpendicular to the axis of acceleration. This effect can be understood as the projection of the acceleration perpendicular to the field line connecting the charge to the observer. The <strong>Poynting Flux</strong> for any chosen direction is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\vec{E} \times \vec{B}}{4 \pi} c=e^{2} a^{2} \frac{\sin ^{2} \theta}{4 \pi r^{2}}
+\]</div>
+<p>where  and  are the electric and magnetic fields, respectively,  is the angle of the chosen direction relative to the axis of the acceleration vector
+, and  is our distance from the radiating charge.</p>
+<p>Because the acceleration dictates the axis along which the electric field is perturbed, Larmor radiation is generally polarized, though if an ensemble of charged particles experience accelerations in different directions, the ensemble averaged radiation may be depolarized.</p>
+<img src="../figures/larmor2.png" width="500">
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
